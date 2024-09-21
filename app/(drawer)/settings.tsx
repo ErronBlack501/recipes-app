@@ -1,7 +1,12 @@
-import { Redirect } from "expo-router";
+import { View, Text } from 'react-native'
+
 
 const Settings = () => {
-  <Redirect href={"/settings"}/>;
-};
+  return (
+    <View>
+      <Text>Settings</Text>
+    </View>
+  )
+}
 
-export default Settings;
+export default Settings
