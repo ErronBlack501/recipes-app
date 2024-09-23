@@ -18,6 +18,7 @@ function CustomDrawerContent(props: any) {
       contentContainerStyle={{ backgroundColor: "#dde3fe" }}
     >
       <DrawerItemList {...props} />
+      <DrawerItem label={"Settings"} onPress={() => router.replace("/settings")} />
       <DrawerItem label={"Logout"} onPress={() => router.replace("/")} />
     </DrawerContentScrollView>
   );
@@ -62,15 +63,6 @@ const DrawerLayout = () => {
                 size={size}
                 color={color}
               />
-            ),
-          }}
-        />
-        <Drawer.Screen
-          name="settings"
-          options={{
-            title: "Settings",
-            drawerIcon: ({ color, size }) => (
-              <Ionicons name="settings" size={size} color={color} />
             ),
           }}
         />

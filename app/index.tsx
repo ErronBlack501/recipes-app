@@ -2,13 +2,14 @@ import {
   View,
   Text,
   ImageBackground,
-  StyleSheet,
+  Image,
   TextInput,
   TouchableOpacity,
-  Pressable,
+  SafeAreaView,
 } from "react-native";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
+import { BlurView } from "expo-blur";
 import { Link } from "expo-router";
 
 const Login = () => {
@@ -16,31 +17,57 @@ const Login = () => {
     <ImageBackground
       source={require("../assets/app-images/kevin-mccutcheon-APDMfLHZiRA-unsplash.jpg")}
       resizeMode="cover"
-      style={{flex: 1}}
+      className="flex-1"
     >
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.text}>Welcome to the recipes app</Text>
-        <View style={styles.formContainer}>
-          <Text>Email</Text>
-          <TextInput
-            inputMode="email"
-            placeholder="Enter your email adress"
-            style={styles.textInput}
-          />
-          <Text>Password</Text>
-          <TextInput
-            secureTextEntry={true}
-            placeholder="Enter your password"
-            style={styles.textInput}
+      <StatusBar hidden />
+
+      <SafeAreaView className="flex-1 justify-between">
+        <View>
+          <Text className="text-center rounded-xl mx-3 my-8 font-bold text-2xl text-amber-400 border border-white bg-amber-50">
+            Welcome to the recipes app
+          </Text>
+          <Image
+            source={require("../assets/images/react-logo.png")}
+            className="mx-auto"
           />
         </View>
+        <View className=" mx-3 border border-white rounded-xl">
+          <BlurView intensity={100} className="justify-center items-center">
+            <Text className="text-2xl text-white font-bold">Log in</Text>
 
-        <TouchableOpacity>
-          <Text>Log in</Text>
-        </TouchableOpacity>
-        <Text>Don't have an account ?</Text>
-        <Link href={"/register"} asChild>
-          <Text>Sign up</Text>
+            <View className="items-start">
+              <Text className="font-bold text-xl">Email</Text>
+              <TextInput
+                placeholder="Enter your email"
+                className="border-slate-300 border bg-white px-2 rounded-xl w-60"
+              />
+            </View>
+            <View className="items-start">
+              <Text className="font-bold text-xl mr-3">Password</Text>
+              <TextInput
+                placeholder="Enter your password"
+                className="border-slate-300 px-2 bg-white border rounded-xl w-60"
+              />
+            </View>
+
+            <View className="flex-row items-center gap-3 my-3">
+              <Text className="text-white">Don't have an account yet ?</Text>
+              <Link href={"/register"} asChild>
+                <TouchableOpacity className="bg-amber-400 rounded-xl ">
+                  <Text className="font-bold text-white px-2 py-1">
+                    Sign up
+                  </Text>
+                </TouchableOpacity>
+              </Link>
+            </View>
+          </BlurView>
+        </View>
+        <Link href={"/(stack)"} asChild>
+          <TouchableOpacity className="bg-amber-400 h-10 rounded-xl mx-2 justify-center">
+            <Text className="font-bold text-white text-xl text-center">
+              Sign in
+            </Text>
+          </TouchableOpacity>
         </Link>
       </SafeAreaView>
     </ImageBackground>
@@ -48,23 +75,3 @@ const Login = () => {
 };
 
 export default Login;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 12,
-  },
-  text: {
-    fontSize: 20,
-  },
-  textInput: {
-    padding: 8,
-    marginBottom: 6,
-    borderColor: "#777",
-    width: 200,
-    borderWidth: 1,
-  },
-  formContainer: {},
-});
