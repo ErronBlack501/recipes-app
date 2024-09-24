@@ -18,7 +18,10 @@ function CustomDrawerContent(props: any) {
       contentContainerStyle={{ backgroundColor: "#dde3fe" }}
     >
       <DrawerItemList {...props} />
-      <DrawerItem label={"Settings"} onPress={() => router.replace("/settings")} />
+      <DrawerItem
+        label={"Settings"}
+        onPress={() => router.push("/settings")}
+      />
       <DrawerItem label={"Logout"} onPress={() => router.replace("/")} />
     </DrawerContentScrollView>
   );
@@ -28,7 +31,9 @@ const DrawerLayout = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
-        screenOptions={{ drawerHideStatusBarOnOpen: true }}
+        screenOptions={{
+          drawerHideStatusBarOnOpen: true,
+        }}
         drawerContent={CustomDrawerContent}
       >
         <Drawer.Screen

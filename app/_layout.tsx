@@ -1,8 +1,21 @@
 import { Stack } from "expo-router";
+import { TouchableOpacity } from "react-native";
 
 const StackLayout = () => {
   return (
     <Stack>
+      <Stack.Screen
+        name="index"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="register"
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name="(drawer)"
         options={{
@@ -12,7 +25,7 @@ const StackLayout = () => {
       <Stack.Screen
         name="settings"
         options={{
-          headerShown: false,
+          headerShown: true,
         }}
       />
     </Stack>
